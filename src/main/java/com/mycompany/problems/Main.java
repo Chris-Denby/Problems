@@ -84,15 +84,23 @@ public class Main
         //int[] arrayA = new int[]{1,2,3,4,5,6,7,8,9};
         //int[] arrayB =  new int[]{1,2,3,4,5};
         
-        /**
+        
         int[] arrayC = new int[]{5,3,7,4,2,11,6,8,90,76,45,332,11,4,6,789,76,5,432};
+        
+        /**
         insertSort3(arrayC);
         for(int i:arrayC)
         {
             System.out.println(i);
         }
-        **/
-        System.out.println(factorizer(6));
+        * */        
+        //System.out.println(factorizer(6));
+        ArrayList<Integer> numList = new ArrayList<>();
+        for(int i:arrayC)
+        {
+            numList.add(i);
+        }
+        binarySearchs(6,numList);
     }
         
     public static void linkedList()
@@ -540,15 +548,7 @@ public class Main
             }
             //increment outer to progress pair evaluation to the right          
             i++;
-        }
-        
-        
-        
-        
-        
-        
-        
-        
+        }  
     }
 
     static int factoriser2(int x)
@@ -561,6 +561,41 @@ public class Main
         }
         while(x>1);
         return result;
+    }
+    
+    static void binarySearch3(int num, ArrayList<Integer> list)
+    {
+        List<Integer> shortList = null;
+        Collections.sort(list);
+        
+        if(list.size()==0)
+        {
+            //arrayEmpty
+            System.out.println("list is empty");
+        }
+        else if(num < list.get(0) || num > list.get(list.size()-1))
+        {
+            //if num is out of the bounds of the list
+            System.out.println(num+" is not in the list");
+        }
+        else
+        {
+            if(num<list.get(list.size()/2))
+            {
+                shortList = list.subList(0,list.size()/2);
+                binarySearch(num,shortList);
+            }
+            else if(num>list.get(list.size()/2))
+            {
+                shortList = list.subList(list.size()/2, list.size());
+            }
+            else if(num==list.get(list.size()/2))
+            {
+                System.out.println(num+" = "+shortList.get(shortList.size()/2));
+                System.out.println(shortList.toString());
+            }
+        }
+        
     }
 
 
